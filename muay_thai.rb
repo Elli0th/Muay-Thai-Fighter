@@ -63,7 +63,6 @@ def remove_character_sprites(character_sprite)
   character_sprite.each do |sprite|
     sprite.remove
   end
-  kicking_active = 0
 end
 
 # Initialize direction as a global variable
@@ -112,14 +111,6 @@ def handle_character_movement(character_sprite)
 
     character_sprite[0].x = character_sprite[1].x
     character_sprite[0].y = character_sprite[1].y
-  end
-end
-
-# Continuous output of kicking_active and direction every second
-Thread.new do
-  loop do
-    puts "Kicking Active: #{$kicking_active}, Direction: #{$direction}"
-    sleep(1)
   end
 end
 
@@ -281,20 +272,10 @@ def handle_map_boundary(character_sprite)
   end
 end
 
-
-# Continuous output of kicking_active every second
-Thread.new do
-  loop do
-    puts "Kicking Active: #{$kicking_active}"
-    sleep(1)
-  end
-end
-
 # Update the function call to include character_sprite argument
 handle_character_movement(character_sprite)
 handle_map_boundary(character_sprite)
 update_missile_sprites(missile_sprites, missile_speeds, character_sprite)
-
 
 # Display the window
 show
